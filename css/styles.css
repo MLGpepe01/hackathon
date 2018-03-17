@@ -73,12 +73,12 @@ width: 150px;
   text-align:center;
 }
 
-#spaceship{
-    
-  
-  
-
+#spaceshipName{
+  border-radius: 10px;
+  box-shadow: 0 5px #999;
+  font-family: cursive;
 }
+
 h4{
     color: teal;
 }
@@ -175,3 +175,7 @@ font-size: 40px;
   background: #3C4D5F none repeat scroll 0 0;
 }
 
+#NewImage{
+  height:500px;
+  width:500px;
+}

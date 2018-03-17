@@ -94,7 +94,7 @@ var interval= Math.floor(Math.random()*10);
             console.log(offset);
             var gameWidth = $('#game').width() - $element.width();
             if ( offset > gameWidth){
-               $element.css("left", offset - interval2);
+               $element.css("left", offset -interval2);
             }
             collission($element);
         });
@@ -154,7 +154,7 @@ $(document).ready(function() {
 
 
  $("#planet").click(function(){
-    $("#planet").html("<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw5hvaeoStNuxHsAQF1tUM5q-IqDYMW1VmZwo5qODq4exa1QZl'>");
+    $("#planet").html("<img id='NewImage'src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw5hvaeoStNuxHsAQF1tUM5q-IqDYMW1VmZwo5qODq4exa1QZl'>");
      
  });
     
