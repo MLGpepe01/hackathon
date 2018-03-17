@@ -92,6 +92,7 @@ var interval= Math.floor(Math.random()*10);
             var $element = $(element);
             var offset= $element.position().left;
             console.log(offset);
+            console.log(gameWidth);
             var gameWidth = $('#game').width() - $element.width();
             if ( offset > gameWidth){
                $element.css("left", offset -interval2);
