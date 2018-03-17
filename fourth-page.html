@@ -18,19 +18,20 @@
   </head>
   <body>
       
-        <div>
+        <div id="game">
           <div id="theName">
           </div>
           <div id="battleship">
             <img id="shipImage" src="https://i.stack.imgur.com/rsH6n.png">
+            <progress value="200000" id="HealthBa" class=" solid" max="20112.5"><div class="progress-container"><span class="progress-bar"></span></div></progress>
           </div>
-          <progress value="200000" id="HealthBar" class=" solid" max="20112.5"><div class="progress-container"><span class="progress-bar"></span></div></progress>
-        </div>
-        <div id="planet">
-          <img src="https://space-facts.com/wp-content/uploads/neptune-transparent.png">
-        </div>
-      
-      
+          <div id="planet">
+            <img src="https://space-facts.com/wp-content/uploads/neptune-transparent.png">
+            <progress value="200000" id="HealthBa" class=" solid" max="20112.5"><div class="progress-container"><span class="progress-bar"></span></div></progress>
+          </div>
+          <div class="enemy"></div>
+        
+      </div>
   
   </body>
 </html>

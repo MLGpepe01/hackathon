@@ -43,22 +43,27 @@ $("document").ready(function(){
     //Forth Page
     
     //Moving the Spaceship
+    $("body").keydown(function(event) {
+    var offset= $("#battleship").position().top;
+    var interval2= 25;
+    var gameheight = $('#game').height() - $("#battleship").height();
+    console.log(offset);
+    if (event.keyCode ===38 && offset > 0) {
+        
+        $("#battleship").css("top", offset -interval2);
+        console.log("up");
+        console.log(offset);
+        
+    } else if (event.keyCode === 40 && offset < gameheight){
+        $("#battleship").css("top", offset +interval2);
+        console.log("down");
+        console.log(offset);
+    } else{
+        return;
+    }
+});
     
-    $(document).keydown(function(e){
-       var currentPosit = battleship.style.top;
-       //if (currentPosit.empty){
-        //   currentPosit === "0px";
-       //}
-       var regEx = /(\d*)/;
-       var nopx = regEx.exec(currentPosit);
-       var battshipPosition = parseInt(nopx);
-       if(e.which === 38){
-           currentPosit = (battshipPosition - 10) + "px"; 
-       } 
-    });
-    
-
-/*global $*/
+/* enemies */
 
 var score = 1;
 var interval= Math.floor(Math.random()*10);
@@ -68,57 +73,28 @@ var interval= Math.floor(Math.random()*10);
             console.log(index);
         var $element = $(element);
         var origin = Math.floor((Math.random() * 460) + 1);
-        $element.css("left", origin);
+        $element.css("top", origin);
         console.log(origin);
     });
     }
     
-
-$(document).ready(function() {
-    prepare();
-    powerup();
-    setInterval(function(){
-    
-        console.log("1 second");
-        fall();
-        powerfall();
-    },
-    50);
-    //just change the number 5000 to adjust the time that should pass before the code is executed again (1000ms is 1 second).
-    
-    
-    
-    
-    
-    
-    
-    
-
-    function powerset(){
-        var left = Math.floor((Math.random() * 460) + 1);
-        var height = $(".powerup").position().top;
-        console.log(left);
-        $(".powerup").css("top",$(".powerup").position().top - height);
-        $(".powerup").css("left", left);
-        powerup();
-    }
-    
-    function enemyset(element){
-        var left = Math.floor((Math.random() * 460) + 1);
+   function enemyset(element){
+        var left = Math.floor((Math.random() * 500) + 1);
         var height = $(element).position().top;
         console.log(left);
         $(element).css("top",$(element).position().top - height);
-        $(element).css("left", left);
+        $(element).css("top", left);
     }
 
     function fall(){
         $( ".enemy" ).each(function(index, element) {
             var interval2= Math.floor(Math.random()*10);
             var $element = $(element);
-            var offset= $element.position().top;
+            var offset= $element.position().left;
+            console.log(offset);
             var gameWidth = $('#game').width() - $element.width();
-            if ( offset < gameWidth){
-               $element.css("top", offset + interval2);
+            if ( offset > gameWidth){
+               $element.css("right", offset + interval2);
             }
             collission($element);
         });
@@ -127,18 +103,18 @@ $(document).ready(function() {
         
     
     function collission(element) {
-    var blueLeft = $("#paddle").offset().left;
+    var blueLeft = $("#battleship").offset().left;
     var redLeft = element.offset().left;
-    var blueRight = blueLeft + $("#paddle").width();
+    var blueRight = blueLeft + $("#battleship").width();
     var redRight = redLeft + element.width();
-    var blueUp = $("#paddle").offset().top;
+    var blueUp = $("#battleship").offset().top;
     var redDown = element.offset().top;
-    var blueDown = blueUp + $("#paddle").height();
+    var blueDown = blueUp + $("#battleship").height();
     var redUp = redDown + element.height();
     if(blueDown > redDown && blueUp < redUp && blueRight > redLeft && blueLeft < redRight) {
         console.log("hit");
         $("#counter").text(score++);
-        $("#key").text("Nice you caught a body!!! (i couldn't find an accurate represenation of an actual body)")
+        
         element.remove();
         createnemy();
     } else if (element.position().top > 470) {
@@ -149,7 +125,7 @@ $(document).ready(function() {
 }
 
     function createnemy(){
-        var math = Math.floor(score/2);
+        
         
         for(var i= 0; i < math ; i = i +1){
             
@@ -165,73 +141,21 @@ $(document).ready(function() {
         
     }
 
-$("body").keydown(function(event) {
-    var offset= $("#paddle").position().left;
-    var interval2= 25;
-    var gameWidth = $('#game').width() - $("#paddle").width();
-    console.log(offset);
-    console.log($("#game").width());
-    if (event.keyCode ===37 && offset > 0) {
-        
-        $("#paddle").css("left", offset -interval2);
-        
-    } else if (event.keyCode === 39 && offset < gameWidth){
-        $("#paddle").css("left", offset +interval2);
-    } else{
-        return;
-    }
-});
-});
 
- 
- 
-    function powerdetermine(){
-        var img = $(".powerup").src;
-        if( img == "images/power0.jpg" ){
-            setInterval(function(){
-               var i = 1;
-               i ++;
-               console.log(i+"time left");
-               if ( i < 50){
-                interval/2;
-               }
-            },
-            250);
-        } else if ( img == "images/power1.jpg" ){
-            setInterval(function(){
-               var i = 1;
-               i ++;
-               console.log(i+"time left");
-               if ( i < 50){
-                interval*2;
-               }
-            },
-            250);
-        } else if ( img == "images/power3.jpg" ){
-            setInterval(function(){
-               var i = 1;
-               i ++;
-               console.log(i+"time left");
-               if ( i < 50){
-                $("#counter").text(score - 1);
-               }
-            },
-            250);
-        } else if ( img == "images/power4.jpg" ){
-            setInterval(function(){
-               var i = 1;
-               i ++;
-               console.log(i+"time left");
-               if ( i < 50){
-                $("#counter").text(score++);
-               }
-            },
-            250);
-        }
-    }
+$(document).ready(function() {
+    prepare();
+    setInterval(function(){
     
+        console.log("1 second");
+        fall();
+    },
+    50);
+});
 
 
-$("#planet"). click()
+ $("#planet").click(function(){
+    $("#planet").append("<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw5hvaeoStNuxHsAQF1tUM5q-IqDYMW1VmZwo5qODq4exa1QZl'></img>");
+});
+    
 
 
