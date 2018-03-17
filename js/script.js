@@ -83,14 +83,12 @@ var interval= Math.floor(Math.random()*10);
         $( ".enemy" ).each(function(index, element) {
             var interval2= Math.floor(Math.random()*10);
             var $element = $(element);
-            var offset= $element.position().left;
+            var offset= $element.position().right;
             console.log(offset);
-            
-            
             var gameWidth = $('#game').width() - $element.width();
             console.log(gameWidth);
             debugger;
-            if ( offset > gameWidth){
+            if ( offset < gameWidth){
                $element.css("left", offset -interval2);
             }
             collission($element);
