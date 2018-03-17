@@ -73,11 +73,15 @@ width: 150px;
   text-align:center;
 }
 
+#planets-created {
+  font-size: 20px;
+}
+
 #spaceshipName{
   border-radius: 10px;
   box-shadow: 0 5px #999;
-  font-family: cursive;
-}
+}  
+
 
 h4{
     color: teal;

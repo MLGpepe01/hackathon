@@ -20,14 +20,7 @@ $("document").ready(function(){
         $('h1').text('Click The Button, Do not waste your time clicking the text!');
     });
 
-    function hideFunction() {
-        var x = document.getElementById("myDIV");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-    }
+   
     
     //Thrid Page 
     $("#btn4").click(function(){ 
@@ -92,8 +85,11 @@ var interval= Math.floor(Math.random()*10);
             var $element = $(element);
             var offset= $element.position().left;
             console.log(offset);
-            console.log(gameWidth);
+            
+            
             var gameWidth = $('#game').width() - $element.width();
+            console.log(gameWidth);
+            debugger;
             if ( offset > gameWidth){
                $element.css("left", offset -interval2);
             }
