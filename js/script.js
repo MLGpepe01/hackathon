@@ -83,12 +83,12 @@ var interval= Math.floor(Math.random()*10);
         $( ".enemy" ).each(function(index, element) {
             var interval2= Math.floor(Math.random()*10);
             var $element = $(element);
-            var offset= $element.position().right;
+            var offset= $element.position().left - 1;
             console.log(offset);
             var gameWidth = $('#game').width() - $element.width();
             console.log(gameWidth);
-            debugger;
-            if ( offset < gameWidth){
+            
+            if ( offset<gameWidth){
                $element.css("left", offset -interval2);
             }
             collission($element);
@@ -119,22 +119,7 @@ var interval= Math.floor(Math.random()*10);
 
 }
 
-    function createnemy(){
-        
-        
-        for(var i= 0; i < 15 ; i = i +1){
-            
-            var div = document.createElement('div');
-
-            div.className = 'enemy';
-        
-            document.getElementById('content').appendChild(div);
-        
-            enemyset(div);
-        
-        }
-        
-    }
+    
 
 
 $(document).ready(function() {
