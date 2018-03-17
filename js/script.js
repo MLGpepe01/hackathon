@@ -94,7 +94,7 @@ var interval= Math.floor(Math.random()*10);
             console.log(offset);
             var gameWidth = $('#game').width() - $element.width();
             if ( offset > gameWidth){
-               $element.css("right", offset + interval2);
+               $element.css("left", offset - interval2);
             }
             collission($element);
         });
@@ -127,7 +127,7 @@ var interval= Math.floor(Math.random()*10);
     function createnemy(){
         
         
-        for(var i= 0; i < math ; i = i +1){
+        for(var i= 0; i < 15 ; i = i +1){
             
             var div = document.createElement('div');
 
@@ -154,8 +154,9 @@ $(document).ready(function() {
 
 
  $("#planet").click(function(){
-    $("#planet").append("<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw5hvaeoStNuxHsAQF1tUM5q-IqDYMW1VmZwo5qODq4exa1QZl'></img>");
-});
+    $("#planet").html("<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw5hvaeoStNuxHsAQF1tUM5q-IqDYMW1VmZwo5qODq4exa1QZl'>");
+     
+ });
     
 
 
